@@ -1,0 +1,536 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"form",
+				"form-control"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"width",
+				"width"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"tab",
+				"tab-size"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"col-md",
+				"col-md-6	 bootstrap.min.css"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"table",
+				"table-layout"
+			],
+			[
+				"m",
+				"max-width"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"p",
+				"php	<?php … ?>"
+			],
+			[
+				"em",
+				"email"
+			],
+			[
+				"passwd",
+				"passwd"
+			],
+			[
+				"uid",
+				"uid"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"pull",
+				"pull-right	 bootstrap.min.css"
+			],
+			[
+				"ta",
+				"table-striped	 bootstrap.min.css"
+			],
+			[
+				"cedua",
+				"Cedula"
+			],
+			[
+				"lo",
+				"login"
+			],
+			[
+				"db",
+				"db_name"
+			],
+			[
+				"mysq",
+				"mysql_connect"
+			],
+			[
+				"margi",
+				"margin-bottom"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"In",
+				"input"
+			],
+			[
+				"l",
+				"link	Tag"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"M",
+				"Monserrat-Regular"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"li",
+				"link	Tag"
+			],
+			[
+				"st",
+				"style	Tag"
+			],
+			[
+				"h",
+				"h1	Tag"
+			],
+			[
+				"sess",
+				"session_start"
+			],
+			[
+				"LOGI",
+				"login"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"su",
+				"submit"
+			],
+			[
+				"iss",
+				"isset"
+			],
+			[
+				"t",
+				"type	Attr"
+			],
+			[
+				"ac",
+				"action	Attr"
+			],
+			[
+				"fo",
+				"form	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "entrada.php",
+			"settings":
+			{
+				"buffer_size": 1284,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ht",
+				"Snippet: bs3-html5-template"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			],
+			[
+				"Package Contro sft",
+				"Package Control: Satisfy Dependencies"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 424.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampp/htdocs/cms51",
+		"/C/xampp/htdocs/cms51/css"
+	],
+	"file_history":
+	[
+		"/C/xampp/htdocs/cms51/index.php",
+		"/C/xampp/htdocs/cms51/header.php",
+		"/C/xampp/htdocs/cms51/config/database.php",
+		"/C/xampp/htdocs/cms51/objects/desplegables.php",
+		"/C/xampp/htdocs/cms51/crear_cms1902.php",
+		"/C/xampp/htdocs/cms51/footer.php",
+		"/C/xampp/htdocs/crud/config/database.php",
+		"/C/xampp/htdocs/crud/objects/category.php",
+		"/C/xampp/htdocs/crud/objects/product.php",
+		"/C/xampp/htdocs/crud/create_product.php",
+		"/C/xampp/htdocs/crud/footer.php",
+		"/C/xampp/htdocs/crud/header.php",
+		"/C/xampp/htdocs/crud/index.php",
+		"/C/xampp/htdocs/crudphp/db.php",
+		"/C/xampp/htdocs/crudphp/crud.php",
+		"/C/xampp/htdocs/crudphp/index.php",
+		"/C/Users/Hector Gonzalez/Documents/documentacion/programacion/php/Clasemysqli.php",
+		"/C/xampp/htdocs/cms41/php/cms1902event.php",
+		"/C/xampp/htdocs/cms41/php/cms1902in.php",
+		"/C/xampp/htdocs/cms41/php/modelo.php",
+		"/C/xampp/htdocs/cms41/css/style3.css",
+		"/C/xampp/htdocs/cms41/php/consulta.php",
+		"/C/xampp/htdocs/cms41/php/cms1902.php",
+		"/C/xampp/htdocs/cms41/php/pmysqli.php",
+		"/C/xampp/htdocs/cms41/test.php",
+		"/C/xampp/htdocs/prueba/index.php",
+		"/C/xampp/htdocs/prueba/funciones.php",
+		"/C/Users/Hector Gonzalez/Documents/documentacion/programacion/php/Clases mysqli.php",
+		"/C/xampp/htdocs/cms41/php/config.php",
+		"/C/xampp/htdocs/cms41/php/basicahtml.html",
+		"/C/xampp/htdocs/cms41/cms1902.php",
+		"/C/xampp/htdocs/cms41/pmysqli.php",
+		"/C/xampp/htdocs/cms41/php/pmysqli",
+		"/C/xampp/htdocs/cms41/pmysqli",
+		"/C/xampp/htdocs/cms41/php/basicahtml.php",
+		"/C/xampp/htdocs/cms41/basicahtml.html",
+		"/C/xampp/htdocs/cms41/Principal.php",
+		"/C/xampp/htdocs/cms41/php/coneccion.php",
+		"/C/xampp/htdocs/cms41/cms1902.html",
+		"/C/xampp/htdocs/cms41/seguridadporsesion.php",
+		"/C/xampp/htdocs/cms41/entrada.php",
+		"/C/xampp/htdocs/cms41/entrada.html",
+		"/C/xampp/htdocs/cms41/login.html",
+		"/C/xampp/mysql/bin/my.ini",
+		"/C/xampp/apache/conf/httpd.conf",
+		"/C/xampp/apache/conf/extra/httpd-languages.conf",
+		"/C/Users/Hector Gonzalez/Documents/dumps/cms/dbcms4270720150600.sql",
+		"/C/xampp/htdocs/cms41/php/seguridadporsesion.php",
+		"/C/xampp/htdocs/cms41/css/style2.css",
+		"/C/xampp/htdocs/cms41/php/entrada.php",
+		"/C/xampp/apache/conf/original/charset.conv",
+		"/C/xampp/apache/conf/charset.conv",
+		"/C/xampp/htdocs/cms41/css/style.css",
+		"/C/xampp/htdocs/cms4/login.html",
+		"/C/xampp/htdocs/cms4/css/style.css",
+		"/C/Users/Hector Gonzalez/Documents/documentacion/programacion/html/fuentes embebidas en html",
+		"/C/Users/Hector Gonzalez/Documents/dumps/cms/dbcms4.sql",
+		"/C/Users/Hector Gonzalez/Documents/dumps/cms/dbcms4260720150000.sql",
+		"/C/workarea/ms/Programas/codigo/1.php",
+		"/C/workarea/ms/Programas/codigo/2.php",
+		"/C/workarea/ms/Programas/codigo/3.php",
+		"/C/Users/Hector Gonzalez/AppData/Roaming/MySQL/Workbench/log/wb.log",
+		"/C/workarea/sadmit_8000/fpdf/tutorial/index.htm",
+		"/C/xampp/htdocs/cms/menu1.php",
+		"/C/xampp/htdocs/cms/inc1.php",
+		"/C/workarea/ms/Programas/cch/cms3/controlms.ccs",
+		"/C/workarea/ms/Programas/cch/cms/Common.php",
+		"/C/workarea/ms/documentacion/notas/MS base de datos (2).txt",
+		"/C/workarea/ms/documentacion/notas/MS base de datos.txt",
+		"/C/workarea/ms/Programas/cch/controlms/Common.php",
+		"/C/workarea/ms/BD/notasmscontrol1db.txt",
+		"/E/revisar/workarea/wcira/db/dbcira.sql",
+		"/E/revisar/workarea/basesis1/db/dbsis1.sql.gz",
+		"/C/workarea/basesis1/dbsis1_cache.xml",
+		"/C/workarea/ms/BD/dbcms22015.sql",
+		"/C/xampp/htdocs/prueba.html",
+		"/C/Users/Hector Gonzalez/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"ASSOC",
+			".table",
+			"table",
+			"clsMenuinc1Menu1"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "entrada.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51,
+								51
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Seti.tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 28.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.CSS Extended Completions":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "cms51.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Package Control Messages"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\xampp\\htdocs\\cms41\\cms41.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 272.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

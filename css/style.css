@@ -1,0 +1,87 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+@font-face{
+	font-family: Montserrat;
+	src:url('fuentes/Montserrat-Regular.ttf');
+}
+@font-face{
+	font-family: Montserrat;
+	font-weight: bold;
+	src:url('fuentes/Montserrat-Bold.ttf');
+}
+	body{
+		background-color:#FFFFFF;
+		background-position:center;
+	}
+	form{
+		background: #F7F7F7;
+		width:360px;
+		border:1px solid #CACACA;
+		border-radius:3px;
+		-moz-border-radius:3px;
+		-webkit-border-radius:3px;
+		box-shadow:inset 0 0 10px #676767;
+		margin:5% auto;  
+		}
+	form h1{
+		text-align:center;
+		color:#000000;
+		font-weight:normal;
+		font-size:3em;
+		margin:30px 0px auto auto;
+		font-family: 'Monserrat', bold;
+		
+
+	}
+	form input{
+		width:280px;
+		height:35px; 
+		padding:0px 10px;
+		margin:10px 10px 30px 30px;
+		color:#746D6D; 
+		text-align:center;
+		font-size: 1.3em;
+		border-radius: 6px;
+
+	}
+	form button {
+		width:180px;
+		margin:0px 0px 90px 90px;
+		margin-bottom:30px;
+		height:50px;
+		font-size:1.1em; 
+ 			border: 1px solid #CF0000;
+ 			color:#fff;
+ 			box-shadow:0px 2px 0px #000;
+ 			-moz-box-shadow:0px 2px 0px #000;
+ 			-webkit-box-shadow:0px 2px 0px #000;
+ 			border-radius:3px;
+ 			-moz-border-radius:3px;
+ 			-webkit-border-radius:3px;
+		 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff3019+0,930202+74 */
+background: #ff3019; /* Old browsers */
+background: -moz-linear-gradient(top,  #ff3019 0%, #930202 74%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(74%,#930202)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ff3019 0%,#930202 74%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ff3019 0%,#930202 74%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ff3019 0%,#930202 74%); /* IE10+ */
+background: linear-gradient(to bottom,  #ff3019 0%,#930202 74%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#930202',GradientType=0 ); /* IE6-9 */
+	}
+	form button:hover{
+		background:#E20101;
+		}
+	form button:active{
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#930202+26,ff3019+100 */
+background: #930202; /* Old browsers */
+background: -moz-linear-gradient(top,  #930202 26%, #ff3019 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(26%,#930202), color-stop(100%,#ff3019)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #930202 26%,#ff3019 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #930202 26%,#ff3019 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #930202 26%,#ff3019 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #930202 26%,#ff3019 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#930202', endColorstr='#ff3019',GradientType=0 ); /* IE6-9 */
+
+	}

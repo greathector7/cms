@@ -1,0 +1,954 @@
+Base de Datos en PHP Orientado a Objeto
+
+https://youtu.be/M7OfJfPLbEI
+https://www.codeofaninja.com/2014/06/php-object-oriented-crud-example-oop.html
+///Estructura de la Base de Datos:
+
+-- Table structure for table `products`
+--
+ 
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(32) NOT NULL,
+  `description` text NOT NULL,
+  `price` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+ 
+--
+-- Dumping data for table `products`
+--
+ 
+INSERT INTO `products` VALUES(1, 'LG P880 4X HD', 'My first awesome phone!', 336, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `products` VALUES(2, 'Google Nexus 4', 'The most awesome phone of 2013!', 299, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `products` VALUES(3, 'Samsung Galaxy S4', 'How about no?', 600, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `products` VALUES(6, 'Bench Shirt', 'The best shirt!', 29, 1, '2014-06-01 01:12:26', '2014-05-31 10:12:21');
+INSERT INTO `products` VALUES(7, 'Lenovo Laptop', 'My business partner.', 399, 2, '2014-06-01 01:13:45', '2014-05-31 10:13:39');
+INSERT INTO `products` VALUES(8, 'Samsung Galaxy Tab 10.1', 'Good tablet.', 259, 2, '2014-06-01 01:14:13', '2014-05-31 10:14:08');
+INSERT INTO `products` VALUES(9, 'Spalding Watch', 'My sports watch.', 199, 1, '2014-06-01 01:18:36', '2014-05-31 10:18:31');
+INSERT INTO `products` VALUES(10, 'Sony Smart Watch', 'The coolest smart watch!', 300, 2, '2014-06-06 17:10:01', '2014-06-06 02:09:51');
+INSERT INTO `products` VALUES(11, 'Huawei Y300', 'For testing purposes.', 100, 2, '2014-06-06 17:11:04', '2014-06-06 02:10:54');
+INSERT INTO `products` VALUES(12, 'Abercrombie Lake Arnold Shirt', 'Perfect as gift!', 60, 1, '2014-06-06 17:12:21', '2014-06-06 02:12:11');
+INSERT INTO `products` VALUES(13, 'Abercrombie Allen Brook Shirt', 'Cool red shirt!', 70, 1, '2014-06-06 17:12:59', '2014-06-06 02:12:49');
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/////////////tabla de categorias//////////////////////////////////////
+esta tabla sirve para mopstrar las categorias que tomara el listbox de la tabla principal
+------------------------------------------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+ 
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(256) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+ 
+--
+-- Dumping data for table `categories`
+--
+ 
+INSERT INTO `categories` VALUES(1, 'Fashion', '2014-06-01 00:35:07', '2014-05-31 09:34:33');
+INSERT INTO `categories` VALUES(2, 'Electronics', '2014-06-01 00:35:07', '2014-05-31 09:34:33');
+INSERT INTO `categories` VALUES(3, 'Motors', '2014-06-01 00:35:07', '2014-05-31 09:34:54');
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////Creacion de la base de archivos (template files)/////////////////
+se crea el archivo que contendra los demas cabecera(header.php)
+se crea el archivo que contendra los demas footer(footer.php)
+
+<?php
+include_once 'header.php';
+?>
+// main content of web page must be here!
+<?php
+include_once 'footer.php';
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////    codigo del header   ////////////////////////////////////////////////
+header.php esta cabecera contendra las lineas de cabecera para la pagina
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <title><?php echo $page_title; ?></title>
+ 
+    <!-- some custom CSS -->
+    <style>
+    .left-margin{
+        margin:0 .5em 0 0;
+    }
+ 
+    .right-button-margin{
+        margin: 0 0 1em 0;
+        overflow: hidden;
+    }
+    </style>
+ 
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+ 
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+ 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+ 
+</head>
+<body>
+ 
+    <!-- container -->
+    <div class="container">
+ 
+        <?php
+        // show page header
+        echo "<div class='page-header'>";
+            echo "<h1>{$page_title}</h1>";
+        echo "</div>";
+        ?>
+		
+		
+		
+		
+///////////////////////////////////////////////////////////////////////////////////////////
+//////////////////		codigo del footer   ///////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+este código debe ser incluido al final del archivo
+
+</div>
+    <!-- /container -->
+ 
+</body>
+</html>
+
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////// 4 crear record en php  ///////////////////////////////////////////////////////
+              4.1 Crear la cabezera "Crear Producto" en create_product.php
+//////////////////////////////////////////////////////////////////////////////////////////
+ <?php
+// set page headers
+$page_title = "Create Product";
+include_once "header.php";
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////
+ ////////////4.2   creamos  el pie de pagina//////////////////////////////////////////////
+ 
+ <?php
+include_once "footer.php";
+?>
+ 
+ //////////////////////////////////////////////////////////////////////////////////////////
+ ////////////4.3 creamos el boton /////////////////////////////////////////////////////////
+ esto colocara el boton entre la cabecera y el pie de pagina, por debajo de "Create Product" header
+ 
+echo "<div class='right-button-margin'>";
+    echo "<a href='index.php' class='btn btn-default pull-right'>Read Products</a>";
+echo "</div>";
+ 
+ /////////////////////////////////////////////////////////////////////////////////////////
+ /////////////4.4 obtenemos la conexion de la base de datos///////////////////////////////
+ con esta conexion traemos  la categoria  o guardamos  un nuevo producto 
+ debemos coloxcar este codigo debajo del codigo 4.3
+ 
+ // get database connection
+include_once 'config/database.php';
+$database = new Database();
+$db = $database->getConnection();
+
+//////////////////////////////////////////////////////////////////////////////////////////
+////////////4.5  Creamos la configuracion de la clase en la base de datos///////////////////////////////
+teniendo la coneccion (4.3) no trabajara  sin esta clase, tendra el nombre de database.php
+y se coloca dentro de la carpeta config
+ 
+
+<?php
+class Database{
+ 
+    // specify your own database credentials
+    private $host = "change_to_your_db_host";
+    private $db_name = "change_to_your_db_name";
+    private $username = "change_to_your_db_username";
+    private $password = "change_to_your_db_password";
+    public $conn;
+ 
+    // get the database connection
+    public function getConnection(){
+ 
+        $this->conn = null;
+ 
+        try{
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+        }catch(PDOException $exception){
+            echo "Connection error: " . $exception->getMessage();
+        }
+ 
+        return $this->conn;
+    }
+}
+?>
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//////////// 4.6 creamos el formulario en  create_product.php/////////////////////////////
+
+<!-- HTML form for creating a product -->
+<form action='create_product.php' method='post'>
+ 
+    <table class='table table-hover table-responsive table-bordered'>
+ 
+        <tr>
+            <td>Name</td>
+            <td><input type='text' name='name' class='form-control' /></td>
+        </tr>
+ 
+        <tr>
+            <td>Price</td>
+            <td><input type='text' name='price' class='form-control' /></td>
+        </tr>
+ 
+        <tr>
+            <td>Description</td>
+            <td><textarea name='description' class='form-control'></textarea></td>
+        </tr>
+ 
+        <tr>
+            <td>Category</td>
+            <td>
+            <!-- categories from database will be here -->
+            </td>
+        </tr>
+ 
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </td>
+        </tr>
+ 
+    </table>
+</form>
+
+/////////////////////////////////////////////////////////////////////////////////////////
+////////////// 4.7  creamos  el loop que nos traera el contenido del listbox/////////////
+debemos colocar este codigo en el sitio del listbox en el formulario 4.6
+
+<tr>
+    <td>Category</td>
+    <td>
+    <?php
+    // read the product categories from the database
+    include_once 'objects/category.php';
+ 
+    $category = new Category($db);
+    $stmt = $category->read();
+ 
+    // put them in a select drop-down
+    echo "<select class='form-control' name='category_id'>";
+        echo "<option>Select category...</option>";
+ 
+        while ($row_category = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row_category);
+            echo "<option value='{$id}'>{$name}</option>";
+        }
+ 
+    echo "</select>";
+    ?>
+    </td>
+</tr>
+
+//////////////////////////////////////////////////////////////////////////////////////////
+///////////4.8  creamos la clase para las categorias  ///////////////////////////////////
+por supuesto que el objeta de la 4.3 no trabajara sin la clase categoria(category)
+este se llamara category.php y lo colocaremos  en la carpeta objects/
+
+
+<?php
+class Category{
+ 
+    // database connection and table name
+    private $conn;
+    private $table_name = "categories";
+ 
+    // object properties
+    public $id;
+    public $name;
+ 
+    public function __construct($db){
+        $this->conn = $db;
+    }
+ 
+    // used by select drop-down list
+    function read(){
+        //select all data
+        $query = "SELECT
+                    id, name
+                FROM
+                    " . $this->table_name . "
+                ORDER BY
+                    name";  
+ 
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+ 
+        return $stmt;
+    }
+?>
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////4.9 Preparamos readName() para  5.5 Later //////////////////////////////////////
+este permitira obtener el nombre de ña categoria que se mostrara  solo como un id
+
+
+// used to read category name by its ID
+function readName(){
+     
+    $query = "SELECT name FROM " . $this->table_name . " WHERE id = ? limit 0,1";
+ 
+    $stmt = $this->conn->prepare( $query );
+    $stmt->bindParam(1, $this->id);
+    $stmt->execute();
+ 
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+     
+    $this->name = $row['name'];
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/////4.10 codigo cuando se envia en el formulario////////////////////////////////////////
+
+este codigo debe colocarse antes del formulario el usuario debe colocar los datos y cuando
+ presione enviar , los valores seran enviados via post request
+ 
+ // if the form was submitted
+if($_POST){
+ 
+    // instantiate product object
+    include_once 'objects/product.php';
+    $product = new Product($db);
+ 
+    // set product property values
+    $product->name = $_POST['name'];
+    $product->price = $_POST['price'];
+    $product->description = $_POST['description'];
+    $product->category_id = $_POST['category_id'];
+ 
+    // create the product
+    if($product->create()){
+        echo "<div class=\"alert alert-success alert-dismissable\">";
+            echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
+            echo "Product was created.";
+        echo "</div>";
+    }
+ 
+    // if unable to create the product, tell the user
+    else{
+        echo "<div class=\"alert alert-danger alert-dismissable\">";
+            echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
+            echo "Unable to create product.";
+        echo "</div>";
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////4.11 crear el objeta class para productos//////////////////////////////////////////////////////
+por supuesto  4.10 no trabajara sin el objeto producto, cuando llame al archivo producto.php y colocado dentro de la carpeta object/ 
+
+
+<?php
+class Product{
+ 
+    // database connection and table name
+    private $conn;
+    private $table_name = "products";
+ 
+    // object properties
+    public $id;
+    public $name;
+    public $price;
+    public $description;
+    public $category_id;
+    public $timestamp;
+ 
+    public function __construct($db){
+        $this->conn = $db;
+    }
+ 
+    // create product
+    function create(){
+ 
+        // to get time-stamp for 'created' field
+        $this->getTimestamp();
+ 
+        //write query
+        $query = "INSERT INTO
+                    " . $this->table_name . "
+                SET
+                    name = ?, price = ?, description = ?, category_id = ?, created = ?";
+ 
+        $stmt = $this->conn->prepare($query);
+ 
+        $stmt->bindParam(1, $this->name);
+        $stmt->bindParam(2, $this->price);
+        $stmt->bindParam(3, $this->description);
+        $stmt->bindParam(4, $this->category_id);
+        $stmt->bindParam(5, $this->timestamp);
+ 
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+ 
+    }
+}
+?>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////4.12 haciendo Trabajar= $this->getTimeestamp()///////////////////////////////////////////////////
+colocar este codigo dentro del archivo product.php
+
+
+// used for the 'created' field when creating a product
+function getTimestamp(){
+    date_default_timezone_set('Asia/Manila');
+    $this->timestamp = date('Y-m-d H:i:s');
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////5.0 leyendo record en php (la forma oo)///////////////////////////////////////////////////////////////
+en este momento  listaremos los registros de la base de datos.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////5.1 crear index.php y seteando la lectura de productos//////////////////////////////////////////////////////
+
+<?php
+$page_title = "Read Products";
+include_once "header.php";
+?>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////5.2 pie de pagina   ///////////////////////////////////////////////////////////////////////////////////
+
+<?php
+include_once "footer.php";
+?>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////5.3 agregar  el boton de "agregar producto"////////////////////////////////////////////////////////////
+
+echo "<div class='right-button-margin'>";
+    echo "<a href='create_product.php' class='btn btn-default pull-right'>Create Product</a>";
+echo "</div>";
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////5.4 configurar  las variables de paginacion  //////////////////////////////////////////////////////////
+
+// page given in URL parameter, default page is one
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+ 
+// set number of records per page
+$records_per_page = 3;
+ 
+// calculate for the query LIMIT clause
+$from_record_num = ($records_per_page * $page) - $records_per_page;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////5.5 recuperar registros de la base de datos ////////////////////////////////////////////////////////////
+
+// include database and object files
+include_once 'config/database.php';
+include_once 'objects/product.php';
+include_once 'objects/category.php';
+ 
+// instantiate database and product object
+$database = new Database();
+$db = $database->getConnection();
+ 
+$product = new Product($db);
+ 
+// query products
+$stmt = $product->readAll($page, $from_record_num, $records_per_page);
+$num = $stmt->rowCount();
+ 
+// display the products if there are any
+if($num>0){
+ 
+    $category = new Category($db);
+ 
+    echo "<table class='table table-hover table-responsive table-bordered'>";
+        echo "<tr>";
+            echo "<th>Product</th>";
+            echo "<th>Price</th>";
+            echo "<th>Description</th>";
+            echo "<th>Category</th>";
+            echo "<th>Actions</th>";
+        echo "</tr>";
+ 
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+ 
+            extract($row);
+ 
+            echo "<tr>";
+                echo "<td>{$name}</td>";
+                echo "<td>{$price}</td>";
+                echo "<td>{$description}</td>";
+                echo "<td>";
+                    $category->id = $category_id;
+                    $category->readName();
+                    echo $category->name;
+                echo "</td>";
+ 
+                echo "<td>";
+                    // edit and delete button will be here
+                echo "</td>";
+ 
+            echo "</tr>";
+ 
+        }
+ 
+    echo "</table>";
+ 
+    // paging buttons will be here
+}
+ 
+// tell the user there are no products
+else{
+    echo "<div>No products found.</div>";
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////5.6  readall() metodo en product.php   ////////////////////////////////////////////////////////////
+
+los archivos recuperados en el 5.5  no trabajaran sin este metodo que se encuentra en object/product.php
+
+function readAll($page, $from_record_num, $records_per_page){
+ 
+    $query = "SELECT
+                id, name, description, price, category_id
+            FROM
+                " . $this->table_name . "
+            ORDER BY
+                name ASC
+            LIMIT
+                {$from_record_num}, {$records_per_page}";
+ 
+    $stmt = $this->conn->prepare( $query );
+    $stmt->execute();
+ 
+    return $stmt;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////5.7 botones de EDITAR BORRAR ////////////////////////////////////////////////////////////////////////////
+
+echo "<td>";
+    // edit and delete button is here
+    echo "<a href='update_product.php?id={$id}' class='btn btn-default left-margin'>Edit</a>";
+    echo "<a delete-id='{$id}' class='btn btn-default delete-object'>Delete</a>";
+echo "</td>";
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////5.8 creando paging_product.php para los botones de paginacion///////////////////////////////////////////
+
+<?php
+// the page where this paging is used
+$page_dom = "index.php";
+ 
+echo "<ul class=\"pagination\">";
+ 
+// button for first page
+if($page>1){
+    echo "<li><a href='{$page_dom}' title='Go to the first page.'>";
+        echo "<<";
+    echo "</a></li>";
+}
+ 
+// count all products in the database to calculate total pages
+$total_rows = $product->countAll();
+$total_pages = ceil($total_rows / $records_per_page);
+ 
+// range of links to show
+$range = 2;
+ 
+// display links to 'range of pages' around 'current page'
+$initial_num = $page - $range;
+$condition_limit_num = ($page + $range)  + 1;
+ 
+for ($x=$initial_num; $x<$condition_limit_num; $x++) {
+ 
+    // be sure '$x is greater than 0' AND 'less than or equal to the $total_pages'
+    if (($x > 0) && ($x <= $total_pages)) {
+ 
+        // current page
+        if ($x == $page) {
+            echo "<li class='active'><a href=\"#\">$x <span class=\"sr-only\">(current)</span></a></li>";
+        } 
+ 
+        // not current page
+        else {
+            echo "<li><a href='{$page_dom}?page=$x'>$x</a></li>";
+        }
+    }
+}
+ 
+// button for last page
+if($page<$total_pages){
+    echo "<li><a href='" .$page_dom . "?page={$total_pages}' title='Last page is {$total_pages}.'>";
+        echo ">>";
+    echo "</a></li>";
+}
+ 
+echo "</ul>";
+?>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////  5.9 Agregar el metodo countAll() en objects/product.php  /////////////////////////////////////////////////
+
+// used for paging products
+public function countAll(){
+ 
+    $query = "SELECT id FROM " . $this->table_name . "";
+ 
+    $stmt = $this->conn->prepare( $query );
+    $stmt->execute();
+ 
+    $num = $stmt->rowCount();
+ 
+    return $num;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////5.10  incluyendo paging_product.php en index.php ///////////////////////////////////////////////////////////
+
+// paging buttons here
+include_once 'paging_product.php';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////6.0 UPDATING  registros en php THE OOP WAY ///////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////6.1  CREANDO  update_product.php y colocando la cabezera de "Update Product" //////////////////////////////
+
+<?php
+$page_title = "Update Product";
+include_once "header.php";
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////6.2 crear el boton "Read Products"/////////////////////////////////////////////////////////////////////////
+
+echo "<div class='right-button-margin'>";
+    echo "<a href='index.php' class='btn btn-default pull-right'>Read Products</a>";
+echo "</div>";
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////6.3 recuperando la informacion de un producto dado por su ID ///////////////////////////////////////////////
+
+// get ID of the product to be edited
+$id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
+ 
+// include database and object files
+include_once 'config/database.php';
+include_once 'objects/product.php';
+ 
+// get database connection
+$database = new Database();
+$db = $database->getConnection();
+ 
+// prepare product object
+$product = new Product($db);
+ 
+// set ID property of product to be edited
+$product->id = $id;
+ 
+// read the details of product to be edited
+$product->readOne();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////6.4   agregar el metodo readOne() en la clase product object //////////////////////////////////////////////
+el metodo readOne()   usado en el 6.3 no trabajara sin el siguiente codigo que esta en objects/product.php 
+
+function readOne(){
+ 
+    $query = "SELECT
+                name, price, description, category_id
+            FROM
+                " . $this->table_name . "
+            WHERE
+                id = ?
+            LIMIT
+                0,1";
+ 
+    $stmt = $this->conn->prepare( $query );
+    $stmt->bindParam(1, $this->id);
+    $stmt->execute();
+ 
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+ 
+    $this->name = $row['name'];
+    $this->price = $row['price'];
+    $this->description = $row['description'];
+    $this->category_id = $row['category_id'];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////// 6.5  colcocar los valores en el formulario ////////////////////////////////////////////////////////////////
+ahora colocaremos los valores dentro del formulario para poder editarlos
+
+<form action='update_product.php?id=<?php echo $id; ?>' method='post'>
+ 
+    <table class='table table-hover table-responsive table-bordered'>
+ 
+        <tr>
+            <td>Name</td>
+            <td><input type='text' name='name' value='<?php echo $product->name; ?>' class='form-control' /></td>
+        </tr>
+ 
+        <tr>
+            <td>Price</td>
+            <td><input type='text' name='price' value='<?php echo $product->price; ?>' class='form-control' /></td>
+        </tr>
+ 
+        <tr>
+            <td>Description</td>
+            <td><textarea name='description' class='form-control'><?php echo $product->description; ?></textarea></td>
+        </tr>
+ 
+        <tr>
+            <td>Category</td>
+            <td>
+                <!-- categories select drop-down will be here -->
+            </td>
+        </tr>
+ 
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </td>
+        </tr>
+ 
+    </table>
+</form>
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////6.6  ciclo para cargar la categoria y mostrarla como drop-down(lista desplegable) ////////////////////////////////
+
+he colocado una sentencia de if($product->category_id==$id){… dentro del ciclo while esto para preseleccionar la opcion del registro seleccionado
+
+<tr>
+    <td>Category</td>
+    <td>
+        <?php
+        // read the product categories from the database
+        include_once 'objects/category.php';
+ 
+        $category = new Category($db);
+        $stmt = $category->read();
+ 
+        // put them in a select drop-down
+        echo "<select class='form-control' name='category_id'>";
+ 
+            echo "<option>Please select...</option>";
+            while ($row_category = $stmt->fetch(PDO::FETCH_ASSOC)){
+                extract($row_category);
+ 
+                // current category of the product must be selected
+                if($product->category_id==$id){
+                    echo "<option value='$id' selected>";
+                }else{
+                    echo "<option value='$id'>";
+                }
+ 
+                echo "$name</option>";
+            }
+        echo "</select>";
+        ?>
+    </td>
+</tr>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////6.7 Codigo cuando el formulario es enviado//////////////////////////////////////////////////////////////////////
+
+// if the form was submitted
+if($_POST){
+ 
+    // set product property values
+    $product->name = $_POST['name'];
+    $product->price = $_POST['price'];
+    $product->description = $_POST['description'];
+    $product->category_id = $_POST['category_id'];
+ 
+    // update the product
+    if($product->update()){
+        echo "<div class=\"alert alert-success alert-dismissable\">";
+            echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
+            echo "Product was updated.";
+        echo "</div>";
+    }
+ 
+    // if unable to update the product, tell the user
+    else{
+        echo "<div class=\"alert alert-danger alert-dismissable\">";
+            echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
+            echo "Unable to update product.";
+        echo "</div>";
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////6.8 Update  codigo  en la clase producto  ///////////////////////////////////////////////////////////////////
+la funcion de update usada en la sentencia if del 6.7 no trabajara si no se agrega este codigo en objects/product.php
+
+function update(){
+ 
+    $query = "UPDATE
+                " . $this->table_name . "
+            SET
+                name = :name,
+                price = :price,
+                description = :description,
+                category_id  = :category_id
+            WHERE
+                id = :id";
+ 
+    $stmt = $this->conn->prepare($query);
+ 
+    $stmt->bindParam(':name', $this->name);
+    $stmt->bindParam(':price', $this->price);
+    $stmt->bindParam(':description', $this->description);
+    $stmt->bindParam(':category_id', $this->category_id);
+    $stmt->bindParam(':id', $this->id);
+ 
+    // execute the query
+    if($stmt->execute()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////7.0  BORRANDO REGISTYROS EN PHP THE OOP WAY////////////////////////////////////////////////////////////////////////
+COLOCAR ESTE SCRIPT ANTES DEL FOOTER.PHP
+
+<script>
+$(document).on('click', '.delete-object', function(){
+         
+    var id = $(this).attr('delete-id');
+    var q = confirm("Are you sure?");
+     
+    if (q == true){
+ 
+        $.post('delete_product.php', {
+            object_id: id
+        }, function(data){
+            location.reload();
+        }).fail(function() {
+            alert('Unable to delete.');
+        });
+ 
+    }
+         
+    return false;
+});
+</script>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////7.2 CREAR delete_product.php  //////////////////////////////////////////////////////////////////////////////////
+en este archivo es donde el ID sera enviado por el codigo java script code en el 7.1
+
+<?php
+// check if value was posted
+if($_POST){
+ 
+    // include database and object file
+    include_once 'config/database.php';
+    include_once 'objects/product.php';
+ 
+    // get database connection
+    $database = new Database();
+    $db = $database->getConnection();
+ 
+    // prepare product object
+    $product = new Product($db);
+     
+    // set product id to be deleted
+    $product->id = $_POST['object_id'];
+     
+    // delete the product
+    if($product->delete()){
+        echo "Object was deleted.";
+    }
+     
+    // if unable to delete the product
+    else{
+        echo "Unable to delete object.";
+         
+    }
+}
+?>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////7.3 DELETE code en la clase producto  ////////////////////////////////////////////////////////////////////////
+delete() este es el metodo dentro de el objeto en la clase product  usada por delete_product.php
+
+// delete the product
+function delete(){
+ 
+    $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+     
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(1, $this->id);
+ 
+    if($result = $stmt->execute()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////
+
+
+

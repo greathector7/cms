@@ -1,0 +1,141 @@
+creamos la carpeta del proyecto y los siguientes subdirectorios
+proyecto
+	config
+	css
+	js
+	objects
+////////////////////////////////////////////////////////////////////////////////////	
+3.0 plantillas iniciales:
+	3.1 creamos la cabezera inicial header.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <title><?php echo $page_title; ?></title>
+ 
+    <!-- some custom CSS -->
+    <style>
+    .left-margin{
+        margin:0 .5em 0 0;
+    }
+ 
+    .right-button-margin{
+        margin: 0 0 1em 0;
+        overflow: hidden;
+    }
+    </style>
+ 
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+ 
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+ 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+ 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+ 
+</head>
+<body>
+ 
+    <!-- container -->
+    <div class="container">
+ 
+        <?php
+        // show page header
+        echo "<div class='page-header'>";
+            echo "<h1>{$page_title}</h1>";
+        echo "</div>";
+        ?>
+
+//////////////////////////////////////////////////////////////////////////////////////////
+3.2 creamos el pie de pagina    footer.php
+
+	</div>
+    <!-- /container -->
+ 
+</body>
+</html>
+//////////////////////////////////////////////////////////////////////////////////////////
+4.0 Creando Registros en Php oop
+//////////////////////////////////////////////////////////////////////////////////////////
+4.1 establecer la cabecera de creación de registro en creacion_cms1902.php(usuario)
+
+<?php
+// set page headers
+$page_title = "Crear Usuario";
+include_once "header.php";
+?>	
+	
+////////////////////////////////////////////////////////////////////////////////////////// 
+ 	4.2 establecer el pie de pagina.
+<?php
+include_once "footer.php";
+?>
+//////////////////////////////////////////////////////////////////////////////////////////
+ 	4.3 Crear boton leer usuarios en creacion_cms1902.php
+
+echo "<div class='right-button-margin'>";
+    echo "<a href='index.php' class='btn btn-default pull-right'>Read Products</a>";
+echo "</div>";
+
+//////////////////////////////////////////////////////////////////////////////////////////
+	4.4 obtener coneccion a base de datos
+	la usaremos para traer los tipos de usuarios y estatus mas adelante
+
+// get database connection
+include_once 'config/database.php';
+ 
+$database = new Database();
+$db = $database->getConnection();
+//////////////////////////////////////////////////////////////////////////////////////////
+	4.5 Crear la Configuracion de la clase de la base de Datos.
+crear database.php en la carpeta /config
+<?php
+class Database{
+ 
+    // specify your own database credentials
+    private $host = "change_to_your_db_host";
+    private $db_name = "change_to_your_db_name";
+    private $username = "change_to_your_db_username";
+    private $password = "change_to_your_db_password";
+    public $conn;
+ 
+    // get the database connection
+    public function getConnection(){
+ 
+        $this->conn = null;
+ 
+        try{
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+        }catch(PDOException $exception){
+            echo "Connection error: " . $exception->getMessage();
+        }
+ 
+        return $this->conn;
+    }
+}
+?>
+//////////////////////////////////////////////////////////////////////////////////////////
+	4.6 Crear Formulario en create_1902.php
+	4.7 Ciclo para mostrar estatus de usuario por lista desplegable
+	4.7 Ciclo para mostrar tipo de usuario por lista desplegable.
+	4.8 crear el objeto clase para estatus y tipo de usuario.
+	4.9 Preparar readName() para leer los nombres de los estatus  y tipos de usuarios
+ 	4.10 codigo del formulario cuando es enviado
+	4.11 Crear el objeto Class para 1902 (usuarios).
+	4.12 hacer trabajar el momento $this->getTimestamp(); 
+

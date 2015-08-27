@@ -1,0 +1,54 @@
+.cad001{
+	width: 890px;
+	margin:2% auto;
+	align-items: center;
+	/*background-color: yellow;*/
+}
+.form-group input{
+	width: 250px;
+	height: 28px;
+	padding-bottom: 3px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+.form-group label{
+	width: 110px;
+	margin-right: 5px;
+	margin-left: 60px;
+}
+.form-group button btn
+		{
+			margin-left:-50px;
+		}
+.agregar{
+	margin-left: 48%;
+	margin-top: 5px;
+}
+
+
+.capa{
+
+}
+.busqueda{
+	
+	margin-bottom: 100px;
+	table-layout: 850;
+	table-condensed;
+}
+
+.usuarios-td{
+	width: 60px
+}
+
+.fecinc{
+	width: 150px;
+}
+.login{
+	width: 90px;
+}
+.cedula{
+	width: 90px;
+}
+.table{
+	width: 95%;
+}
