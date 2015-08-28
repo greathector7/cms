@@ -26,17 +26,18 @@ if($_POST){
  
     // set product property values
     $usuario->login = $_POST['login'];
+    $usuario->password = $_POST['passwd'];
     $usuario->cedula = $_POST['cedula'];
     $usuario->nombre = $_POST['nombre'];
     $usuario->fecinc = $_POST['fecinc'];
-    $usuario->estatus = $_POST['nom_estatus'];
+    //$usuario->estatus = $_POST['nom_estatus'];
     $usuario->tipou = $_POST['tipou'];
  
     // create the product
     if($usuario->create()){
         echo "<div class=\"alert alert-success alert-dismissable\">";
             echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-            echo "Product was created.";
+            echo "Usuario Agregado.";
         echo "</div>";
     }
  
@@ -85,7 +86,29 @@ if($_POST){
         </tr>
         <tr>
             <td>Fecha Inclusion</td>
-            <td><input type='datetime' name='fecinc' class='form-control' /></td>
+            <td>
+            <!--<input type='datetime' name='fecinc' class='form-control' /> -->
+<div class="well">
+  <div id="datetimepicker1" class="input-append date" name='fecinc' >
+    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker1').datetimepicker({
+      language: 'es-ve'
+    });
+  });
+</script>
+</td>
+
+
+
+
         </tr>
     <tr>
                 <td>Estatus</td>
@@ -101,9 +124,10 @@ if($_POST){
                 echo "<select class='form-control' name='estatus_id'>";
                     echo "<option>Select estatus...</option>";
              
-                    while ($row_estatus = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    while ($row_estatus = $stmt->fetch(PDO::FETCH_ASSOC))
+                    {
                         extract($row_estatus);
-                        echo "<option value='{$id}'>{$nom_estatus}</option>";
+                        echo "<option value='{$id_estatus}'>{$nom_estatus}</option>";
                     }
              
                 echo "</select>";
@@ -131,7 +155,7 @@ if($_POST){
      
             while ($row_tipou = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row_tipou);
-                echo "<option value='{$id}'>{$tipou}</option>";
+                echo "<option value='{$id_tipou}'>{$tipou}</option>";
             }
      
         echo "</select>";

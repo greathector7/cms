@@ -7,8 +7,8 @@ class Estatus{
     private $table_name = "cad001a1";
  
     // object properties
-    public $id;
-    public $name;
+    public $id_estatus;
+    public $nom_estatus;
  
     public function __construct($db){
         $this->conn = $db;
@@ -18,7 +18,7 @@ class Estatus{
     function read(){
         //select all data
         $query = "SELECT
-                    id, nom_estatus
+                    id_estatus, nom_estatus
                 FROM
                     " . $this->table_name . "
                 ORDER BY
@@ -30,18 +30,18 @@ class Estatus{
         return $stmt;
     }
     // used to read category name by its ID
-function readName(){
+function readName()
+    {
+        $query = "SELECT nom_estatus FROM " . $this->table_name . " WHERE id_estatus = ? limit 0,1";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->bindParam(1, $this->id_estatus);
+        $stmt->execute();
      
-    $query = "SELECT nom_estatus FROM " . $this->table_name . " WHERE id = ? limit 0,1";
- 
-    $stmt = $this->conn->prepare( $query );
-    $stmt->bindParam(1, $this->id);
-    $stmt->execute();
- 
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-     
-    $this->nom_estatus = $row['nom_estatus'];
-}
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+         
+        $this->nom_estatus = $row['nom_estatus'];
+        return $this->nom_estatus;
+    }
 
 
 
@@ -79,10 +79,10 @@ class TipoUsuario{
     // used to read category name by its ID
 function readName(){
      
-    $query = "SELECT tipou FROM " . $this->table_name . " WHERE id = ? limit 0,1";
+    $query = "SELECT tipou FROM " . $this->table_name . " WHERE id_tipou = ? limit 0,1";
  
     $stmt = $this->conn->prepare( $query );
-    $stmt->bindParam(1, $this->id);
+    $stmt->bindParam(1, $this->id_tipou);
     $stmt->execute();
  
     $row = $stmt->fetch(PDO::FETCH_ASSOC);

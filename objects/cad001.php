@@ -11,11 +11,11 @@ class Cad001{
     public $cedula;
     public $nombre;
     public $fecinc;
-    public $estatus;
+    public $id_estatus;
     public $fecest;
     public $observ;
     public $tipou;
-    public $codigo2;
+   // public $codigo2;
     public $email;
 
     public function __construct($db){
@@ -32,7 +32,7 @@ class Cad001{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    login = ?, passwd = ?, cedula = ?, nombre = ?, fecinc = ?, estatus= ?, fecest= ?, observ= ?, tipou= ?, codigo2= ?, email= ?";
+                    login = ?, passwd = ?, cedula = ?, nombre = ?, fecinc = ?, id_estatus = ?, fecest = ?, observ = ?, id_tipou = ?, email = ?";
  
         $stmt = $this->conn->prepare($query);
  
@@ -41,12 +41,12 @@ class Cad001{
         $stmt->bindParam(3, $this->cedula);
         $stmt->bindParam(4, $this->nombre);
         $stmt->bindParam(5, $this->fecinc);
- 		$stmt->bindParam(6, $this->estatus);
+ 		$stmt->bindParam(6, $this->id_estatus);
  		$stmt->bindParam(7, $this->fecest);
  		$stmt->bindParam(8, $this->observ);
- 		$stmt->bindParam(9, $this->tipou);
- 		$stmt->bindParam(10, $this->codigo2);
- 		$stmt->bindParam(11, $this->email);
+ 		$stmt->bindParam(9, $this->id_tipou);
+ 		//$stmt->bindParam(10, $this->codigo2);
+ 		$stmt->bindParam(10, $this->email);
         if($stmt->execute()){
             return true;
         }else{
