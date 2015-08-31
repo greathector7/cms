@@ -11,8 +11,9 @@ require_once("coneccion.php");
  <body>
  	<?php 
  		$username=$_POST['login'];
- 		$password=$_POST['password'];
-		$sql= "SELECT * FROM cad001 WHERE login = '$username' and Passwd=md5('$password')";
+ 		$salt = '$bgr$/';
+ 		$password=sha1(md5($salt . ($_POST['password'])));
+		$sql= "SELECT * FROM cad001 WHERE login = '$username' and Passwd = '$password'";
 	$result=mysql_query($sql);
 	// contamos resultados
 	$count = mysql_num_rows($result);
@@ -27,7 +28,7 @@ require_once("coneccion.php");
 		mysql_free_result($result);
 		// Cerrar la conexión
 		mysql_close($link);
-		header("location:Principal.php");
+		header("location:cms1902.php");
 		 
 		}
 		 else {

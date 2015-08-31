@@ -48,5 +48,6 @@
 	// show page header
 	echo "<div class='page-header'>";
 		echo "<h1>{$page_title}</h1>";
+		 date_default_timezone_set('America/Caracas');
 	echo "</div>";
 	?>

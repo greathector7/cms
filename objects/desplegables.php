@@ -42,35 +42,21 @@ function readName()
         $this->nom_estatus = $row['nom_estatus'];
         return $this->nom_estatus;
     }
-
-
-
-
 }
 class TipoUsuario{
- 
     // database connection and table name
     private $conn;
     private $table_name = "cad001a2";
- 
     // object properties
     public $id_tipou;
     public $tipou;
- 
     public function __construct($db){
         $this->conn = $db;
     }
- 
     // used by select drop-down list
     function read(){
         //select all data
-        $query = "SELECT
-                    id_tipou, tipou
-                FROM
-                    " . $this->table_name . "
-                ORDER BY
-                    id_tipou";  
- 
+        $query = "SELECT id_tipou, tipou FROM " . $this->table_name . " ORDER BY id_tipou";  
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();
  

@@ -2,11 +2,14 @@
 // Colocar Nombre de Cabecera
 $page_title = "Crear Usuario";
 include_once "header.php";
+
+   $fecha = date('Y-m-d H:i:s');
+   echo $fecha;
 ?>
 
 <?php 
 echo "<div class='right-button-margin'>";
-    echo "<a href='index.php' class='btn btn-default pull-right'>Ver Usuarios</a>";
+    echo "<a href='cms1902.php' class='btn btn-default pull-right'>Ver Usuarios</a>";
 echo "</div>";
 
 // get database connection
@@ -18,30 +21,35 @@ $db = $database->getConnection();
 
 <?php 
 // if the form was submitted
+
 if($_POST){
- 
+   $salt = '$bgr$/';
+   $_POST['passwd']=sha1(md5($salt . ($_POST['passwd'])));
     // instantiate product object
     include_once 'objects/cad001.php';
     $usuario = new Cad001($db);
- 
-    // set product property values
+     // valores para agregar usuario
+    
     $usuario->login = $_POST['login'];
-    $usuario->password = $_POST['passwd'];
+    $usuario->passwd = $_POST['passwd'];
     $usuario->cedula = $_POST['cedula'];
     $usuario->nombre = $_POST['nombre'];
-    $usuario->fecinc = $_POST['fecinc'];
-    //$usuario->estatus = $_POST['nom_estatus'];
-    $usuario->tipou = $_POST['tipou'];
+    $usuario->fecinc = $fecha;
+    $usuario->id_estatus = $_POST['id_estatus'];
+    $usuario->observ = $_POST['observ'];
+    $usuario->id_tipou = $_POST['id_tipou'];
+    $usuario->email = $_POST['email'];
+
  
-    // create the product
+    // Crear el Usuario
     if($usuario->create()){
         echo "<div class=\"alert alert-success alert-dismissable\">";
             echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-            echo "Usuario Agregado.";
+            echo "Usuario Agregado.";   
+
         echo "</div>";
     }
- 
-    // if unable to create the product, tell the user
+    // aviso si no es posible crear el usuario
     else{
         echo "<div class=\"alert alert-danger alert-dismissable\">";
             echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
@@ -49,14 +57,9 @@ if($_POST){
 
 
         echo "</div>";
-
     }
 }
-
-
-
-
- ?>
+?>
 
 
 
@@ -82,35 +85,10 @@ if($_POST){
         </tr>
  		<tr>
             <td>Nombre</td>
-            <td><input type='text' name='nombre' class='form-control' /></td>
+            <td><input type='text' name='nombre' class='form-control' /><input type='hidden'  name='fecinc' value="<?php echo $fecha; ?>" class='form-control' /></td>
         </tr>
-        <tr>
-            <td>Fecha Inclusion</td>
-            <td>
-            <!--<input type='datetime' name='fecinc' class='form-control' /> -->
-<div class="well">
-  <div id="datetimepicker1" class="input-append date" name='fecinc' >
-    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
-  </div>
-</div>
-<script type="text/javascript">
-  $(function() {
-    $('#datetimepicker1').datetimepicker({
-      language: 'es-ve'
-    });
-  });
-</script>
-</td>
-
-
-
-
-        </tr>
-    <tr>
+                
+                <tr>
                 <td>Estatus</td>
                 <td>
                 <?php
@@ -121,8 +99,8 @@ if($_POST){
                 $stmt = $estatus->read();
              
                 // put them in a select drop-down
-                echo "<select class='form-control' name='estatus_id'>";
-                    echo "<option>Select estatus...</option>";
+                echo "<select class='form-control' name='id_estatus'>";
+                    echo "<option>Selecciona estatus...</option>";
              
                     while ($row_estatus = $stmt->fetch(PDO::FETCH_ASSOC))
                     {
@@ -133,7 +111,7 @@ if($_POST){
                 echo "</select>";
                 ?>
                 </td>
-    </tr>
+        </tr>
         <tr>
             <td>Observacion</td>
             <td><input type='text' name='observ' class='form-control' /></td>
@@ -150,7 +128,7 @@ if($_POST){
         $stmt = $tipousuario->read();
      
         // put them in a select drop-down	
-        echo "<select class='form-control' name='tipou'>";
+        echo "<select class='form-control' name='id_tipou'>";
             echo "<option>Seleccione Tipo de Usuarios...</option>";
      
             while ($row_tipou = $stmt->fetch(PDO::FETCH_ASSOC)){
