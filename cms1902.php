@@ -10,10 +10,11 @@ echo "</div>";
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
  
 // configurar registros por paginas
-$records_per_page = 3;
+$records_per_page = 5;
  
 // Calculando el limite de la consulta
 $from_record_num = ($records_per_page * $page) - $records_per_page;
+
 /////////////////////// recuperar los registros de la base de datos////////////////////////////////////
 // include database and object files
 include_once 'config/database.php';
@@ -39,7 +40,7 @@ if($num>0){
     echo "<table class='table table-hover table-responsive table-bordered'>";
         echo "<tr>";
             echo "<th>Login</th>";
-            echo "<th>Password</th>";
+            //echo "<th>Password</th>";
             echo "<th>Cedula</th>";
             echo "<th>Nombre</th>";
             echo "<th>Estatus</th>";
@@ -55,7 +56,7 @@ if($num>0){
  
             echo "<tr>";
                 echo "<td>{$login}</td>";
-                echo "<td>{$passwd}</td>";
+                //echo "<td>{$passwd}</td>";
                 echo "<td>{$cedula}</td>";
                 echo "<td>{$nombre}</td>";
                 echo "<td>";
@@ -69,11 +70,11 @@ if($num>0){
                     $tipousuario->readName();
                     echo $tipousuario->tipou;
                 echo "</td>";
- 
+                echo "<td>{$email}</td>";
                 echo "<td>";
                     // botones para borrar y editar
-                   //cho "<a href='update_cad001.php?id={$id}' class='btn btn-default left-margin'>Editar</a>";
-                   //cho "<a delete-id='{$id}' class='btn btn-default delete-object'>Borrar</a>";
+                   echo "<a href='update_cad001.php?id={$id}' class='btn btn-default left-margin'>Editar</a>";
+                   echo "<a delete-id='{$id}' class='btn btn-default delete-object'>Borrar</a>";
                 echo "</td>";
  
             echo "</tr>";
@@ -81,8 +82,8 @@ if($num>0){
         }
  
     echo "</table>";
-     // paging buttons here
- //include_once 'paging_product.php';
+     // Botones de paginacion
+ include_once 'paging_cad001.php';
 }
  
 // decirle al usuario que no hay nada en la busqueda
